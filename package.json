@@ -1,0 +1,51 @@
+{
+  "name": "@adobe/reactor-babel-plugin-replace-tokens-edge",
+  "version": "1.0.0",
+  "description": "Babel plugin that will replace data element tokens (eg: {{some_data_element}}) with valid JavaScript.",
+  "main": "src/index.js",
+  "author": {
+    "name": "Adobe Systems",
+    "url": "http://adobe.com",
+    "email": "reactor@adobe.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:adobe/reactor-babel-plugin-replace-tokens-edge.git"
+  },
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint 'src/**'",
+    "debug": "reactor-token-scripts-edge sanitize --filePath test/fixtures/container.js | node --inspect ./node_modules/.bin/babel --no-babelrc --plugins=./src/index.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && lint-staged",
+      "pre-push": "npm test"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint -- --fix"
+    ]
+  },
+  "dependencies": {
+    "@adobe/reactor-token-scripts-edge": "^1.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.12.9",
+    "@babel/generator": "^7.12.5",
+    "@babel/parser": "^7.12.7",
+    "@babel/traverse": "^7.12.9",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
+    "jest": "^26.4.2",
+    "jest-runner-eslint": "^0.10.0",
+    "lint-staged": "^10.5.2",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0"
+  },
+  "license": "Apache-2.0"
+}
