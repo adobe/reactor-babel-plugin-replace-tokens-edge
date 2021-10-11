@@ -154,6 +154,8 @@ module.exports = (getDataElementValues) => ({
                   getDataElementValue("reactor006d007900500072006500630069006f00750073");
 
                   {{core a}}
+
+                  // getDataElementValue('commented')
                 }, 1500);
               });
             },
