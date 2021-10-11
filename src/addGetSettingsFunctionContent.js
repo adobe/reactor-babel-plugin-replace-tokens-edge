@@ -17,7 +17,6 @@ const tokenPattern = getTokenPattern();
 
 const decode = require('./decode');
 const escape = (str) => str.replace(/([\""\r\n\t])/g, '\\$1');
-const onlyTokenRegex = new RegExp(`^${tokenPattern}$`);
 
 module.exports = (settingsString, t) => {
   var dataElementTokens = findTokensInString(`var a = ${settingsString}`)
@@ -37,26 +36,13 @@ module.exports = (settingsString, t) => {
       let stringValue = path.node.value;
 
       // If the settings object doesn't contain any token, we don't need to do anything.
-      const tokens = findTokensInString(stringValue);
-      if (tokens.length === 0) {
+      if (dataElementTokens.length === 0) {
         return;
       }
 
-      // Is the string a single data element token and nothing else?
-      const onlyTokenResult = onlyTokenRegex.exec(stringValue);
-      if (onlyTokenResult) {
-        path.replaceWith(
-          t.expressionStatement(
-            t.callExpression(t.identifier('getDataElementValue'), [
-              t.StringLiteral(decode(onlyTokenResult[1]))
-            ])
-          )
-        );
-
-        return;
-      }
-
-      // If string is "some getDataElementValue(reactorXXXX)" we need to transform it to
+      // Is the string a single data element token and nothing else we just
+      // return the getDataElementValue result. If string is
+      // "some getDataElementValue(reactorXXXX)" we need to transform it to
       // "some " + getDataElementValue("decoded name").
       const pieces = [];
 
