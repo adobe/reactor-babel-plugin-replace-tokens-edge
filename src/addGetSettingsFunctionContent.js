@@ -20,7 +20,7 @@ const escape = (str) => str.replace(/([\""\r\n\t])/g, '\\$1');
 const onlyTokenRegex = new RegExp(`^${tokenPattern}$`);
 
 module.exports = (settingsString, t) => {
-  var dataElementTokens = findTokensInString(settingsString)
+  var dataElementTokens = findTokensInString(`var a = ${settingsString}`)
     .map(decode)
     // Some tokens might be sanitized (reactorXXX) while other provided by user might be not.
     // We need to make sure we have a unique list.
@@ -77,7 +77,10 @@ module.exports = (settingsString, t) => {
         pieces.push(`"${escape(stringValue)}"`);
       }
 
-      path.replaceWith(parse(pieces.join('+')).program.body[0].expression);
+      path.replaceWith(
+        parse(`a = ${pieces.join('+')}`).program.body[0].expression.right
+      );
+      path.skip();
     },
 
     //This might never happen in reality, but we want to be sure that whereever
