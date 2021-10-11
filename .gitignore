@@ -1,3 +1,4 @@
 node_modules/
 dist/
 adobe-reactor-babel-plugin-replace-tokens-edge-*.tgz
+.eslintcache
