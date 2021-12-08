@@ -27,7 +27,7 @@
     ]
   },
   "dependencies": {
-    "@adobe/reactor-token-scripts-edge": "^1.1.3"
+    "@adobe/reactor-token-scripts-edge": "git://github.com/adobe/reactor-token-scripts-edge.git#1b7f819fa1c42d4c63b67fd6f7e811a604c2779d"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
