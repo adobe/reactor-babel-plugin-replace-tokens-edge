@@ -182,6 +182,10 @@ module.exports = (getDataElementValues) => ({
         {
           "modulePath": 'adobe-cloud-connector/src/lib/actions/sendData.js',
           "settings": {
+            "a": "",
+            "b": "b",
+            "c": true,
+            d: 'a',
             "method": 'GET',
             "url": 'https://webhook.site/f6623232-4296-460d-a266-bb65e850dc7c?q={{ecid}}&e={{e1}}&x={{core}}&gg=1',
           }

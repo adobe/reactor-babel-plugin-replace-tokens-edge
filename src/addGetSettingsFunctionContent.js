@@ -63,9 +63,11 @@ module.exports = (settingsString, t) => {
         pieces.push(`"${escape(stringValue)}"`);
       }
 
-      path.replaceWith(
-        parse(`a = ${pieces.join('+')}`).program.body[0].expression.right
-      );
+      if (pieces.length > 0) {
+        path.replaceWith(
+          parse(`a = ${pieces.join('+')}`).program.body[0].expression.right
+        );
+      }
       path.skip();
     },
 
