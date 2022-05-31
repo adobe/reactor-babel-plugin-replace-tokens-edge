@@ -138,6 +138,9 @@ module.exports = (getDataElementValues) => ({
                   const z2 = 5 + {{core}} + 5;
                   resolve(5);
 
+                  var x1 = "\\";
+                  var x2 = '\\';
+
                   const x = getDataElementValue("core")
                   const y = "some getDataElementValue(\"core555\")";
                   const y2 = "some getDataElementValue('core556')";

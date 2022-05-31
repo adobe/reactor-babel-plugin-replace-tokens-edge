@@ -16,7 +16,7 @@ const getTokenPattern = require('@adobe/reactor-token-scripts-edge/src/getTokenP
 const tokenPattern = getTokenPattern();
 
 const decode = require('./decode');
-const escape = (str) => str.replace(/([\""\r\n\t])/g, '\\$1');
+const escape = (str) => str.replace(/([\""\r\n\t\\])/g, '\\$1');
 
 module.exports = (settingsString, t) => {
   var dataElementTokens = findTokensInString(`var a = ${settingsString}`)
