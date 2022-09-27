@@ -189,6 +189,12 @@ module.exports = (getDataElementValues) => ({
             "b": "b",
             "c": true,
             d: 'a',
+            e: {
+              "a":"{{deep1}}",
+              b: ["{{deep2}}", {
+                c: "{{deep3}}"
+              }]
+            },
             "method": 'GET',
             "url": 'https://webhook.site/f6623232-4296-460d-a266-bb65e850dc7c?q={{ecid}}&e={{e1}}&x={{core}}&gg=1',
           }
