@@ -1,6 +1,6 @@
 {
   "name": "@adobe/reactor-babel-plugin-replace-tokens-edge",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Babel plugin that will replace data element tokens (eg: {{some_data_element}}) with valid JavaScript.",
   "main": "src/index.js",
   "author": {
